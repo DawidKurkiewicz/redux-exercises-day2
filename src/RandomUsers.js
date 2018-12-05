@@ -4,15 +4,29 @@ import { connect } from 'react-redux'
 const RandomUsers = (props) => (
     <div>
         {
-            props._users.map(
-                user => <div> {user.name.first}</div>
-            )
+            (props._isError) ?
+                <div>somethings wrong </div>
+                :
+                (props._isFetching) ?
+                    <div> Ładowanie...</div>
+                    :
+
+                    props._users.map(
+                        user =>
+
+
+                            <div> {user.name.first}</div>
+
+                    )
         }
     </div>
 )
 
 const mapStateToProps = state => ({
-    _users: state.randomUsers.users
+    _users: state.randomUsers.users,
+    _isFetching: state.randomUsers.isFetching,
+    _isError: state.randomUsers.isError
+
 })
 const mapDispatchToProps = dispatch => ({})
 
