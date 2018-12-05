@@ -1,23 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { inc } from './state/counter'
+import { dec } from './state/counter'
 
 
 
+const mapStateToProps = state => ({
+    currentValue: state.counter.number
 
-const mapStateToProps = store => ({
 })
 
 
 const mapDispatchToProps = dispatch => ({
+    inc: () => dispatch(inc()),
+    dec: () => dispatch(dec())
 
 })
 
-const Counter = props => {
-    return <div>
-        <h1>Count state: {}</h1>
-        <button onClick={}>+</button>
-        <button onClick={}>-</button>
+const Counter = (props) => {
+    return (
+        <div>
+            <h1>Current Value: {props.currentValue}</h1>
+            <button onClick={() =>props.inc()}>+</button>
+            <button onClick={() => props.dec()}>-</button>
 
-    </div>
+        </div>
+    )
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)

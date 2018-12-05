@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from 'redux'
-import counter from './state/counter'
+import counter, {inc, dec } from './state/counter'
 
 
 
@@ -14,4 +14,7 @@ export const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+window.increaseCounter = () => store.dispatch(inc())
+window.decreaseCounter = () => store.dispatch(dec())
 
