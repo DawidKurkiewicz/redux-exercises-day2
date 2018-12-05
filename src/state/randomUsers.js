@@ -1,6 +1,19 @@
 const SET_USERS = 'randomUsers/SET_USERS'
 
-export const setUsers = (users) => ({
+
+fetch('https://randomuser.me/api')
+    .then(r => r.json())
+    .then(data => {
+      store.dispatch(
+        setUsers(data.results)
+      )
+    })
+
+    const fetchUsersAsyncAction = () => (dispatch, getState) => {
+
+    }
+
+export const setUsersAction = users => ({
     type: SET_USERS,
     users: users
 })
