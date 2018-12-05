@@ -1,6 +1,6 @@
 const INC = 'counter/INC'
 const DEC = 'counter/DEC'
-const RESET = 'RESET'
+const RESET = 'counter/RESET'
 
 
 

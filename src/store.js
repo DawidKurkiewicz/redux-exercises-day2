@@ -1,22 +1,25 @@
-import { combineReducers, createStore } from 'redux'
-import counter, {inc, dec, reset } from './state/counter'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+
+import counter from './state/counter'
+import randomUsers from './state/randomUsers'
 
 
 
 
-const rootReducer = combineReducers({
-    counter
+const reducer = combineReducers({
+    counter,
+    randomUsers
 })
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const store = createStore(
-    rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+    reducer,
+    composeEnhancers(
+        applyMiddleware(thunk)
+    )
 )
 
-window.increaseCounter = () => store.dispatch(inc())
-window.decreaseCounter = () => store.dispatch(dec())
-window.reset = () => store.dispatch(reset())
 
 
