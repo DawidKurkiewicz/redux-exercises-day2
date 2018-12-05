@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class RandomUsers extends React.Component {
     componentDidMount() {
         this.props._fetchUsersAsyncAction(
-            'https://randomuser.me/api'
+            'https://ransdomuser.me/api'
         )
     }
     render() {
@@ -14,8 +14,15 @@ class RandomUsers extends React.Component {
             <div>
                 {
                     (this.props._isError) ?
-                        <div> somethings wrong </div>
+                        <div> somethings wrong
+                        <button onClick={() => this.props._fetchUsersAsyncAction(
+                                'https://randomuser.me/api'
+                            )}>
+                                Try Again
+                          </button>
+                        </div>
                         :
+
                         (this.props._isFetching) ?
                             <div> Loading...</div>
                             :
