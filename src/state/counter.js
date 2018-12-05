@@ -1,5 +1,7 @@
 const INC = 'counter/INC'
 const DEC = 'counter/DEC'
+const RESET = 'RESET'
+
 
 
 const INITIAL_STATE = {
@@ -15,6 +17,9 @@ export const dec = () => ({
     type: DEC
 
 })
+export const reset = () => ({
+    type: RESET
+})
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -25,6 +30,10 @@ export default (state = INITIAL_STATE, action) => {
         case DEC:
             return {
                 number: state.number - 1
+            }
+            case RESET:
+            return {
+                number: state.number = 0
             }
         default:
             return state
